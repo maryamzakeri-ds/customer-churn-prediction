@@ -21,22 +21,26 @@ The dataset contains customer demographic information, subscribed services, acco
 ## Project Workflow
 
 1. Data Understanding
-2. Exploratory Data Analysis (EDA)
-3. Data Cleaning 
-4. Data Preprocessing
-5. Feature Engineering
-6. Model Training
-7. Model Evaluation
-8. Hyperparameter Tuning
+2. Data Cleaning 
+3. Exploratory Data Analysis (EDA)
+4. Feature Engineering 
+5. Data Preprocessing 
+6. Model Training 
+7. Model Evaluation 
+8. Hyperparameter Tuning 
 9. Feature Importance Analysis
 10. Model Deployment Preparation
 
 ---
 
-## Data Preprocessing
+## Data Cleaning
 
+* Removed `customerID`
 * Converted `TotalCharges` to numeric values
 * Handled missing values
+
+## Data Preprocessing
+
 * One-Hot Encoding for categorical variables
 * Standard Scaling for numerical variables
 * Built preprocessing pipeline using `ColumnTransformer`
