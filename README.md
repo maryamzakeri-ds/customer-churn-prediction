@@ -23,13 +23,11 @@ The dataset contains customer demographic information, subscribed services, acco
 1. Data Understanding
 2. Data Cleaning 
 3. Exploratory Data Analysis (EDA)
-4. Feature Engineering 
-5. Data Preprocessing 
-6. Model Training 
-7. Model Evaluation 
-8. Hyperparameter Tuning 
-9. Feature Importance Analysis
-10. Model Deployment Preparation
+4. Data Preprocessing 
+5. Model Training 
+6. Model Evaluation 
+7. Hyperparameter Tuning 
+8. Feature Importance Analysis
 
 ---
 
@@ -38,6 +36,7 @@ The dataset contains customer demographic information, subscribed services, acco
 * Removed `customerID`
 * Converted `TotalCharges` to numeric values
 * Handled missing values
+* Split Dataset into Training and Test Sets
 
 ## Data Preprocessing
 
@@ -54,24 +53,23 @@ The following models were trained and evaluated:
 * Logistic Regression
 * Decision Tree
 * Random Forest
-* Random Forest (Balanced)
 * XGBoost
 
-Hyperparameter tuning was performed using **GridSearchCV**.
+Hyperparameter tuning was performed using **GridSearchCV** and **RandomizedSearchCV**.
 
 ---
 
 ## Model Performance
 
-| Model                     | Accuracy | Precision |   Recall | F1-score |
-| ------------------------- | -------: | --------: | -------: | -------: |
-| Logistic Regression       |     0.81 |      0.66 |     0.56 |     0.60 |
-| Decision Tree             |     0.72 |      0.47 |     0.48 |     0.47 |
-| Random Forest             |     0.78 |      0.61 |     0.49 |     0.54 |
-| Random Forest (Balanced)  |     0.77 |      0.55 |     0.62 |     0.58 |
-| Tuned Logistic Regression |     0.74 |      0.51 | **0.79** | **0.62** |
-| Tuned Random Forest       |     0.76 |      0.53 |     0.76 | **0.62** |
-| XGBoost                   |     0.78 |      0.59 |     0.52 |     0.55 |
+| Model                     | Accuracy | Precision |   Recall | F1-score | False Negative | AUC |
+| ------------------------- | -------: | --------: | -------: | -------: | -------------: | --: |
+| Logistic Regression       |     0.81 |      0.66 |     0.56 |     0.60 |            165 |  84 |
+| Decision Tree             |     0.73 |      0.49 |     0.50 |     0.49 |            187 |  65 |
+| Random Forest             |     0.79 |      0.62 |     0.49 |     0.55 |            192 |  81 | 
+| XGBoost                   |     0.78 |      0.59 |     0.52 |     0.55 |            180 |  82 |
+| Tuned Logistic Regression |     0.74 |      0.50 | **0.79** | **0.62** |         **79** |  84 |
+| Tuned XGBoost             |     0.81 |      0.67 |     0.53 |     0.59 |            175 |  84 |
+
 
 ---
 
@@ -79,9 +77,8 @@ Hyperparameter tuning was performed using **GridSearchCV**.
 
 The most influential features identified by the models include:
 
-* Customer tenure
 * Contract type
-* Total charges
+* Customer tenure
 
 Customers with longer tenure and long-term contracts were significantly less likely to churn, while customers with month-to-month contracts showed a much higher churn risk.
 
@@ -95,13 +92,6 @@ Customers with longer tenure and long-term contracts were significantly less lik
 * Matplotlib
 * Scikit-learn
 * XGBoost
-* Joblib
-
----
-
-## Model Deployment
-
-The final trained model was saved using **Joblib** and successfully loaded to perform predictions on new customer data.
 
 ---
 

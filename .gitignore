@@ -1,5 +1,24 @@
 .idea/
-.ipynb_checkpoints/
+
+# Python
 __pycache__/
+*.py[cod]
+*.pyo
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
 .venv/
-models/*.pkl
+env/
+.env
+
+# Conda environments
+.conda/
+
+# OS files (macOS)
+.DS_Store
+
+# Logs
+*.log
